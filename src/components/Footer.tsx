@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { event } from "@/content/event";
 import { getGeneralWhatsAppLink } from "@/lib/whatsapp";
 import { Calendar, MapPin, Phone, MessageCircle, ArrowRight } from "lucide-react";
@@ -11,7 +12,7 @@ export default function Footer() {
       <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-moon-gold/40 to-transparent" />
 
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-5">
-        {/* Title & Date from Poster */}
+        {/* Title from Poster */}
         <div className="flex flex-col items-center gap-1.5">
           <div className="flex items-center gap-2.5">
             <span className="w-3 h-3 rounded-full bg-moon-gold shadow-[0_0_12px_#f5c84c]" />
@@ -19,9 +20,6 @@ export default function Footer() {
               {event.nameEn}
             </h3>
           </div>
-          <p className="text-sm font-semibold text-moon-gold-light">
-            {event.nameBn}
-          </p>
         </div>
 
         {/* Date and Venue Strip */}
@@ -64,11 +62,21 @@ export default function Footer() {
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </a>
 
-        {/* Organizer & Official Poster Disclaimer */}
-        <div className="w-full max-w-lg border-t border-night-800/80 mt-6 pt-6 space-y-2">
-          <p className="text-xs text-gray-300">
-            Organized by <strong className="text-white font-bold">{event.organizer}</strong>
-          </p>
+        {/* Organizer Logo & Official Poster Disclaimer */}
+        <div className="w-full max-w-lg border-t border-night-800/80 mt-6 pt-6 space-y-4">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-gray-400 font-medium tracking-wide">Organized By:</span>
+            <div className="inline-flex items-center justify-center bg-white px-4 py-2 rounded-xl shadow-md hover:scale-105 transition-transform">
+              <Image
+                src="/images/remark-logo.png"
+                alt="Remark"
+                width={130}
+                height={40}
+                className="h-7 w-auto object-contain"
+              />
+            </div>
+          </div>
+
           <p className="text-[11px] sm:text-xs text-gray-400 italic">
             * {event.disclaimer}
           </p>
@@ -76,7 +84,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-[11px] text-gray-500 mt-2">
-          © {currentYear} {event.organizer}. All rights reserved.
+          © {currentYear} Remark. All rights reserved.
         </div>
       </div>
     </footer>

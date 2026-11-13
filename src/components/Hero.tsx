@@ -4,7 +4,7 @@ import { Calendar, MapPin, Tag } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[82vh] sm:min-h-[88vh] flex items-center justify-center overflow-hidden px-4 pt-10 pb-12 sm:pt-16 sm:pb-20">
+    <section className="relative min-h-[560px] sm:min-h-[640px] flex items-center justify-center overflow-hidden px-4 pt-10 pb-12 sm:pt-16 sm:pb-20">
       {/* Background Full Moon Night & Moonlit Sea Visual */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <Image
@@ -14,13 +14,13 @@ export default function Hero() {
           priority
           unoptimized
           sizes="100vw"
-          className="object-cover object-center opacity-85"
+          className="object-cover object-center opacity-40 sm:opacity-45"
         />
         {/* Subtle Midnight Oceanic Vignette for High Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02050f]/60 via-[#060e24]/40 to-[#030611]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#02050f]/75 via-[#060e24]/60 to-[#030611]" />
         
         {/* Living Golden Lunar Glow Radiating from the Full Moon */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,200,76,0.22)_0%,transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,200,76,0.18)_0%,transparent_65%)]" />
 
         {/* Soft Tide Mist Gradient at Bottom for Seamless Transition */}
         <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#030611] to-transparent" />
