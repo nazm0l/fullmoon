@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import FullMoonBackground from "@/components/FullMoonBackground";
 import Hero from "@/components/Hero";
 import CoreExperience from "@/components/CoreExperience";
@@ -13,25 +12,22 @@ export default function Home() {
       {/* Living Full Moon Night Sky & Ocean Atmosphere */}
       <FullMoonBackground />
 
-      {/* 1. Header Navigation */}
-      <Navbar />
-
-      {/* 2. Hero Section (Recreating the Official Event Poster) */}
+      {/* 1. Hero Section (Recreating the Official Event Poster) */}
       <Hero />
 
-      {/* 3. The 4 Core Pillars (Full Moon & Sea, Seafood Dinner, Midnight Snacks, Morning Khichuri) */}
+      {/* 2. The Core Highlights */}
       <CoreExperience />
 
-      {/* 4. Event Night Timeline */}
+      {/* 3. Event Night Timeline */}
       <Timeline />
 
-      {/* 5. Booking Form */}
+      {/* 4. Booking Form */}
       <BookingForm />
 
-      {/* 6. Footer */}
+      {/* 5. Footer */}
       <Footer />
 
-      {/* 7. Floating WhatsApp Assistance */}
+      {/* 6. Floating WhatsApp Assistance */}
       <WhatsAppFab />
     </main>
   );

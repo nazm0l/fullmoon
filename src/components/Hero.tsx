@@ -4,7 +4,7 @@ import { Calendar, MapPin, Clock, Phone, Sparkles, ArrowRight, Tag, UtensilsCros
 
 export default function Hero() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden px-4 pt-4 pb-8 sm:pt-12 sm:pb-20">
+    <section className="relative flex items-center justify-center overflow-hidden px-4 pt-8 pb-8 sm:pt-14 sm:pb-20">
       {/* Background Poster Visual with Dark Oceanic Vignette */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
