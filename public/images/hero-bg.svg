@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1200" width="100%" height="100%">
+  <defs>
+    <!-- Sky Gradient -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#02040a" />
+      <stop offset="35%" stop-color="#070d24" />
+      <stop offset="65%" stop-color="#0f1b44" />
+      <stop offset="85%" stop-color="#182759" />
+      <stop offset="100%" stop-color="#091026" />
+    </linearGradient>
+
+    <!-- Full Moon Glow -->
+    <radialGradient id="moonAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8db" stop-opacity="1" />
+      <stop offset="25%" stop-color="#fce288" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#f5c84c" stop-opacity="0.35" />
+      <stop offset="75%" stop-color="#f5c84c" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#f5c84c" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="moonDisk" cx="42%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#fff4cc" />
+      <stop offset="90%" stop-color="#f5d36e" />
+      <stop offset="100%" stop-color="#e8be48" />
+    </radialGradient>
+
+    <!-- Ocean Gradient -->
+    <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#07122b" />
+      <stop offset="40%" stop-color="#0a1a3d" />
+      <stop offset="80%" stop-color="#050e24" />
+      <stop offset="100%" stop-color="#030814" />
+    </linearGradient>
+
+    <!-- Moon Reflection Shimmer on Water -->
+    <linearGradient id="waterShimmer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff5cc" stop-opacity="0.8" />
+      <stop offset="20%" stop-color="#f5c84c" stop-opacity="0.6" />
+      <stop offset="60%" stop-color="#f5c84c" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#07122b" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Lantern Glow -->
+    <radialGradient id="lanternGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe699" stop-opacity="0.9" />
+      <stop offset="30%" stop-color="#f5c84c" stop-opacity="0.6" />
+      <stop offset="70%" stop-color="#e27e16" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#e27e16" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Beach Sand Gradient -->
+    <linearGradient id="sandGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e1836" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#091126" />
+      <stop offset="100%" stop-color="#030611" />
+    </linearGradient>
+  </defs>
+
+  <!-- Night Sky -->
+  <rect width="1920" height="1200" fill="url(#skyGrad)" />
+
+  <!-- Soft Nebula Clouds in Sky -->
+  <ellipse cx="650" cy="300" rx="450" ry="160" fill="#233575" opacity="0.15" />
+  <ellipse cx="1300" cy="240" rx="550" ry="200" fill="#2e1f57" opacity="0.12" />
+  <ellipse cx="960" cy="320" rx="600" ry="220" fill="#f5c84c" opacity="0.06" />
+
+  <!-- Stars Field -->
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="120" cy="80" r="1.5" />
+    <circle cx="280" cy="140" r="1" opacity="0.5" />
+    <circle cx="390" cy="65" r="2" />
+    <circle cx="510" cy="180" r="1.2" />
+    <circle cx="680" cy="90" r="1.8" />
+    <circle cx="820" cy="130" r="1" opacity="0.6" />
+    <circle cx="1120" cy="75" r="1.5" />
+    <circle cx="1260" cy="160" r="2" />
+    <circle cx="1440" cy="110" r="1.2" opacity="0.7" />
+    <circle cx="1620" cy="85" r="1.8" />
+    <circle cx="1780" cy="145" r="1" />
+    <circle cx="210" cy="260" r="1.4" opacity="0.6" />
+    <circle cx="340" cy="330" r="1.8" />
+    <circle cx="1580" cy="270" r="1.6" />
+    <circle cx="1740" cy="310" r="1.2" opacity="0.7" />
+    <circle cx="70" cy="210" r="1.2" />
+    <circle cx="1860" cy="190" r="1.5" />
+  </g>
+
+  <!-- Large Majestic Full Moon -->
+  <!-- Wide Ambient Aura -->
+  <circle cx="960" cy="310" r="380" fill="url(#moonAura)" />
+  <circle cx="960" cy="310" r="220" fill="url(#moonAura)" />
+  <!-- Moon Surface -->
+  <circle cx="960" cy="310" r="135" fill="url(#moonDisk)" />
+  <!-- Realistic Crater Shadings -->
+  <g fill="#cf9d26" opacity="0.24">
+    <ellipse cx="910" cy="260" rx="32" ry="24" />
+    <ellipse cx="995" cy="335" rx="42" ry="32" />
+    <ellipse cx="935" cy="355" rx="28" ry="18" />
+    <ellipse cx="1010" cy="265" rx="24" ry="20" />
+    <circle cx="875" cy="315" r="18" />
+    <circle cx="955" cy="300" r="14" />
+  </g>
+
+  <!-- Distant Cox's Bazar Hills Silhouette -->
+  <path d="M0,640 Q220,615 480,635 T960,630 T1440,625 T1920,638 L1920,700 L0,700 Z" fill="#040b1e" opacity="0.8" />
+
+  <!-- Ocean Body -->
+  <rect y="640" width="1920" height="560" fill="url(#oceanGrad)" />
+
+  <!-- Shimmering Moon Light Path on Ocean Waves -->
+  <polygon points="960,640 820,1050 1100,1050" fill="url(#waterShimmer)" />
+  <!-- Individual wave crest highlights -->
+  <ellipse cx="960" cy="655" rx="120" ry="4" fill="#fff" opacity="0.7" />
+  <ellipse cx="960" cy="675" rx="160" ry="5" fill="#fff8db" opacity="0.6" />
+  <ellipse cx="960" cy="705" rx="210" ry="7" fill="#fce288" opacity="0.5" />
+  <ellipse cx="960" cy="745" rx="260" ry="8" fill="#f5c84c" opacity="0.4" />
+  <ellipse cx="960" cy="790" rx="320" ry="9" fill="#f5c84c" opacity="0.35" />
+  <ellipse cx="960" cy="845" rx="380" ry="11" fill="#f5c84c" opacity="0.25" />
+  <ellipse cx="960" cy="910" rx="450" ry="13" fill="#f5c84c" opacity="0.2" />
+
+  <!-- Gentle Rolling Ocean Waves -->
+  <path d="M0,720 C320,700 640,735 960,715 C1280,695 1600,730 1920,710 L1920,1200 L0,1200 Z" fill="#050d24" opacity="0.45" />
+  <path d="M0,810 C380,785 760,825 1140,800 C1520,780 1720,815 1920,800 L1920,1200 L0,1200 Z" fill="#07122e" opacity="0.6" />
+
+  <!-- Foreshore Beach Sand Curve -->
+  <path d="M0,900 Q480,840 960,890 T1920,870 L1920,1200 L0,1200 Z" fill="url(#sandGrad)" />
+
+  <!-- Warm Beach Lanterns & Cabana Atmosphere -->
+  <!-- Lantern 1 (Left) -->
+  <circle cx="340" cy="930" r="60" fill="url(#lanternGlow)" />
+  <circle cx="340" cy="930" r="14" fill="#fff6d6" />
+  <rect x="333" y="920" width="14" height="20" rx="3" fill="#d97706" opacity="0.8" />
+  <line x1="340" y1="940" x2="340" y2="1010" stroke="#040714" stroke-width="4" />
+
+  <!-- Lantern 2 (Center-Left) -->
+  <circle cx="680" cy="955" r="75" fill="url(#lanternGlow)" />
+  <circle cx="680" cy="955" r="16" fill="#fff6d6" />
+  <rect x="672" y="944" width="16" height="22" rx="3" fill="#d97706" opacity="0.8" />
+  <line x1="680" y1="966" x2="680" y2="1040" stroke="#040714" stroke-width="4" />
+
+  <!-- Lantern 3 (Center-Right) -->
+  <circle cx="1240" cy="950" r="75" fill="url(#lanternGlow)" />
+  <circle cx="1240" cy="950" r="16" fill="#fff6d6" />
+  <rect x="1232" y="939" width="16" height="22" rx="3" fill="#d97706" opacity="0.8" />
+  <line x1="1240" y1="961" x2="1240" y2="1035" stroke="#040714" stroke-width="4" />
+
+  <!-- Lantern 4 (Right) -->
+  <circle cx="1580" cy="925" r="60" fill="url(#lanternGlow)" />
+  <circle cx="1580" cy="925" r="14" fill="#fff6d6" />
+  <rect x="1573" y="915" width="14" height="20" rx="3" fill="#d97706" opacity="0.8" />
+  <line x1="1580" y1="935" x2="1580" y2="1005" stroke="#040714" stroke-width="4" />
+
+  <!-- Soft Beach Table Silhouettes -->
+  <ellipse cx="680" cy="1045" rx="50" ry="12" fill="#040714" />
+  <ellipse cx="1240" cy="1040" rx="50" ry="12" fill="#040714" />
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgFood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0503" />
+      <stop offset="40%" stop-color="#241006" />
+      <stop offset="80%" stop-color="#140905" />
+      <stop offset="100%" stop-color="#050814" />
+    </linearGradient>
+    <radialGradient id="fireAura" cx="50%" cy="60%" r="55%">
+      <stop offset="0%" stop-color="#ffd54f" stop-opacity="0.85" />
+      <stop offset="35%" stop-color="#ff7043" stop-opacity="0.6" />
+      <stop offset="70%" stop-color="#d84315" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="goldPlate" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffd54f" />
+      <stop offset="50%" stop-color="#f5c84c" />
+      <stop offset="100%" stop-color="#d49618" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgFood)" />
+
+  <!-- Warm Fire Glow -->
+  <circle cx="400" cy="350" r="320" fill="url(#fireAura)" />
+
+  <!-- Glowing Charcoal Embers Base -->
+  <ellipse cx="400" cy="450" rx="340" ry="70" fill="#120603" opacity="0.9" />
+  <ellipse cx="400" cy="445" rx="300" ry="55" fill="#2d0c03" />
+
+  <!-- Skewer and BBQ Grate Lines -->
+  <line x1="160" y1="420" x2="640" y2="420" stroke="#f5c84c" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+  <line x1="180" y1="450" x2="620" y2="450" stroke="#f5c84c" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+  <line x1="220" y1="480" x2="580" y2="480" stroke="#f5c84c" stroke-width="2.5" stroke-linecap="round" opacity="0.3" />
+
+  <!-- Giant Grilled Tiger Prawn Silhouette & Highlights -->
+  <path d="M260,390 C290,320 400,290 520,330 C560,345 590,375 620,410 C580,415 520,405 470,390 C390,365 320,375 260,390 Z" fill="#e65100" stroke="#ffd54f" stroke-width="2" />
+  <path d="M290,375 C340,325 430,310 500,340" stroke="#fff3e0" stroke-width="4" stroke-linecap="round" opacity="0.75" />
+  <path d="M330,400 C370,360 450,350 510,375" stroke="#ffe082" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+
+  <!-- Live BBQ Flame Wisps -->
+  <path d="M360,360 Q340,240 380,180 Q400,230 420,290" fill="#ffb74d" opacity="0.5" />
+  <path d="M410,340 Q430,220 470,160 Q450,240 435,310" fill="#ffa726" opacity="0.4" />
+
+  <!-- Aromatic Steam Curves -->
+  <path d="M330,280 Q300,190 350,120" stroke="#fff8e1" stroke-width="4" stroke-linecap="round" opacity="0.35" fill="none" />
+  <path d="M400,270 Q440,170 390,100" stroke="#fff8e1" stroke-width="5" stroke-linecap="round" opacity="0.4" fill="none" />
+  <path d="M470,290 Q430,190 480,110" stroke="#fff8e1" stroke-width="3.5" stroke-linecap="round" opacity="0.3" fill="none" />
+
+  <!-- Golden Floating Sparks -->
+  <circle cx="340" cy="220" r="3" fill="#ffe082" />
+  <circle cx="430" cy="180" r="3.5" fill="#ffd54f" />
+  <circle cx="390" cy="140" r="2" fill="#fff" />
+  <circle cx="490" cy="200" r="2.5" fill="#ffb74d" />
+  <circle cx="460" cy="250" r="3" fill="#ffd54f" />
+  <circle cx="310" cy="270" r="2" fill="#ffcc80" />
+
+  <!-- Title Badge Banner -->
+  <rect x="180" y="505" width="440" height="52" rx="26" fill="#0c1328" stroke="url(#goldPlate)" stroke-width="1.5" />
+  <text x="400" y="538" fill="#fff8e1" font-family="'Hind Siliguri', system-ui, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">
+    🔥 তাজা সী-ফুড ও লাইভ বারবিকিউ
+  </text>
+</svg>
