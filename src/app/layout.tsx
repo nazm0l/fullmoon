@@ -72,7 +72,7 @@ export default function RootLayout({
 
   return (
     <html lang="bn" className={`${hindSiliguri.variable} ${playfair.variable} font-sans`}>
-      <body className="bg-night-950 text-gray-100 min-h-screen flex flex-col selection:bg-moon-gold selection:text-night-950 antialiased">
+      <body className="bg-night-950 text-gray-100 min-h-screen flex flex-col selection:bg-moon-gold selection:text-night-950 antialiased overflow-x-hidden">
         {pixelId && (
           <Script
             id="meta-pixel"

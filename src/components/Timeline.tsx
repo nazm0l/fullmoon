@@ -19,11 +19,11 @@ export default function Timeline() {
       </Reveal>
 
       {/* Vertical Timeline Container */}
-      <div className="relative pl-7 sm:pl-10 ml-2 sm:ml-6 border-l-2 border-moon-gold/40 space-y-4 sm:space-y-8">
+      <div className="relative pl-6 sm:pl-10 ml-4 sm:ml-8 border-l-2 border-moon-gold/40 space-y-4 sm:space-y-8">
         {event.schedule.map((item, index) => (
           <Reveal key={index} delayMs={index * 100} className="relative group">
             {/* Timeline Node Point with Lucide Icon */}
-            <div className={`absolute -left-[43px] sm:-left-[53px] top-1.5 flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-night-950 border-2 ${
+            <div className={`absolute -left-[25px] sm:-left-[31px] top-1.5 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-night-950 border-2 ${
               item.isMagicHour ? "border-moon-gold shadow-[0_0_25px_rgba(245,200,76,0.8)] scale-110" : "border-moon-gold shadow-[0_0_15px_rgba(245,200,76,0.35)]"
             } group-hover:scale-110 transition-all duration-300 z-10 text-moon-gold`}>
               {index === 0 && <GlassWater className="w-5 h-5" />}

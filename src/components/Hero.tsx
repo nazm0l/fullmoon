@@ -5,43 +5,43 @@ import { Calendar, MapPin, Tag } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-[560px] sm:min-h-[640px] flex items-center justify-center overflow-hidden px-4 pt-10 pb-12 sm:pt-16 sm:pb-20">
-      {/* Background Full Moon Night & Moonlit Sea Visual */}
+      {/* Background Full Moon Night & Moonlit Sea Visual (Pure Beach & Moon SVG - No Persons) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <Image
-          src="/images/hero-moon-beach.jpg"
+          src="/images/hero-bg.svg"
           alt="Full Moon Night by the Sea - Cox's Bazar"
           fill
           priority
           unoptimized
           sizes="100vw"
-          className="object-cover object-center opacity-40 sm:opacity-45"
+          className="object-cover object-center opacity-25 sm:opacity-30"
         />
-        {/* Subtle Midnight Oceanic Vignette for High Text Readability */}
+        {/* Midnight Oceanic Vignette for High Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#02050f]/75 via-[#060e24]/60 to-[#030611]" />
         
         {/* Living Golden Lunar Glow Radiating from the Full Moon */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,200,76,0.18)_0%,transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,200,76,0.15)_0%,transparent_65%)]" />
 
         {/* Soft Tide Mist Gradient at Bottom for Seamless Transition */}
         <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#030611] to-transparent" />
       </div>
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
+      <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center w-full px-2">
         {/* Main Poster Title Block */}
-        <div className="inline-block mb-2">
-          <div className="flex items-center justify-center gap-2 sm:gap-3">
-            <h1 className="font-serif text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] italic uppercase">
+        <div className="flex flex-col items-center mb-2 max-w-full">
+          <div className="flex items-center justify-center">
+            <h1 className="font-serif text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] italic uppercase text-center leading-tight">
               Full Moon, Sea &amp;
             </h1>
           </div>
-          <div className="relative inline-flex items-center justify-center gap-3 mt-1">
-            <span className="font-serif text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-extrabold text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] italic uppercase">
+          <div className="relative inline-flex items-center justify-center gap-2 sm:gap-3 mt-1 max-w-full">
+            <span className="font-serif text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] italic uppercase tracking-tight">
               Seafood Night
             </span>
 
             {/* Golden Prawn Outline Icon from Poster */}
             <svg
-              className="w-9 h-9 sm:w-14 sm:h-14 text-moon-gold shrink-0 drop-shadow-[0_0_20px_rgba(245,200,76,0.7)]"
+              className="w-6 h-6 sm:w-12 sm:h-12 md:w-14 md:h-14 text-moon-gold shrink-0 drop-shadow-[0_0_20px_rgba(245,200,76,0.7)]"
               viewBox="0 0 64 64"
               fill="none"
               stroke="currentColor"
@@ -59,7 +59,7 @@ export default function Hero() {
 
             {/* Signature Golden Curved Underline */}
             <svg
-              className="absolute -bottom-3 inset-x-0 w-full h-3 text-moon-gold overflow-visible"
+              className="absolute -bottom-2 sm:-bottom-3 inset-x-0 w-full h-2 sm:h-3 text-moon-gold overflow-visible"
               viewBox="0 0 300 12"
               fill="none"
               preserveAspectRatio="none"
@@ -74,24 +74,24 @@ export default function Hero() {
         </div>
 
         {/* Bangla Headline & Time from Poster */}
-        <h2 className="mt-4 sm:mt-8 text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
-          <span className="text-gray-100">
+        <h2 className="mt-3 sm:mt-6 text-lg xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)] max-w-full px-2">
+          <span className="block sm:inline text-gray-100">
             জোছনা মাখা সমুদ্র, মুগ্ধতার এক রাত
           </span>{" "}
-          <span className="font-serif italic text-moon-gold font-normal text-xl sm:text-3xl">
+          <span className="inline-block font-serif italic text-moon-gold font-normal text-sm sm:text-2xl md:text-3xl mt-0.5 sm:mt-0">
             ({event.timeRange})
           </span>
         </h2>
 
         {/* Date and Venue Strip with Lucide Icons */}
-        <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-6 text-sm sm:text-base font-semibold text-gray-100">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-night-950/80 border border-night-700/80 shadow-lg backdrop-blur-md">
-            <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-moon-gold" />
+        <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-base font-semibold text-gray-100 max-w-full">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-night-950/80 border border-night-700/80 shadow-lg backdrop-blur-md">
+            <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-moon-gold shrink-0" />
             <span>Event Date: <strong className="text-white">{event.date}</strong></span>
           </div>
 
-          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-night-950/80 border border-night-700/80 shadow-lg backdrop-blur-md">
-            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-moon-gold" />
+          <div className="flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-night-950/80 border border-night-700/80 shadow-lg backdrop-blur-md">
+            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-moon-gold shrink-0" />
             <span>Venue: <strong className="text-white">{event.venue}</strong></span>
           </div>
         </div>
