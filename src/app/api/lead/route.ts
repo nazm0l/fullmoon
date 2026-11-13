@@ -97,12 +97,15 @@ export async function POST(req: NextRequest) {
     const totalAmount = data.persons * unitPrice;
     const formattedAmount = `${totalAmount.toLocaleString("en-BD")} TK`;
 
+    const paymentMethodLabel = data.paymentMethod === "bank" ? "City Bank Transfer" : "bKash";
+
     const leadRecord = {
       createdAt,
       name: data.name,
       phone: normalizedPhone,
       persons: data.persons,
       totalAmount: formattedAmount,
+      paymentMethod: paymentMethodLabel,
       transactionId: data.transactionId,
       // Keep adults populated for backward-compatibility with sheets
       adults: data.persons,
@@ -175,7 +178,8 @@ export async function POST(req: NextRequest) {
           `📞 *Phone:* \`${leadRecord.phone}\`\n` +
           `👥 *Persons:* ${leadRecord.persons} জন\n` +
           `💰 *Total Amount:* ${leadRecord.totalAmount}\n` +
-          `💳 *TrxID:* \`${leadRecord.transactionId}\`\n` +
+          `💳 *Payment Method:* ${leadRecord.paymentMethod}\n` +
+          `🔖 *TrxID / Ref:* \`${leadRecord.transactionId}\`\n` +
           (leadRecord.note ? `📝 *Note:* ${leadRecord.note}\n` : "") +
           `📍 *Source:* ${leadRecord.utm_source || "Direct"}\n` +
           `⏱ *Time:* ${leadRecord.createdAt}`;

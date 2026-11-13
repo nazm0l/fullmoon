@@ -32,10 +32,19 @@ export const event = {
   priceUnit: "per person",
   priceUnitBn: "জনপ্রতি",
   
-  // Mobile Banking details for Booking
-  paymentNumber: "01816856022",
-  paymentNumberDisplay: "01816 856022",
-  paymentMethods: "বিকাশ / নগদ / রকেট (Personal)",
+  // Payment Details (bKash & Bank Transfer)
+  bkashNumber: "01816856022",
+  bkashNumberDisplay: "01816 856022",
+  bkashType: "Personal (Send Money)",
+
+  bankDetails: {
+    accountName: "Remark International",
+    accountNumber: "1502685788001",
+    bankName: "The City Bank Limited",
+    branch: "Dhanmondi",
+    routingNumber: "225261187",
+    swiftCode: "CIBLBDDH",
+  },
   
   organizer: "Remark",
   organizerDisplay: "Organized By: Remark",
@@ -165,7 +174,7 @@ export const event = {
 
   whatsappMessages: {
     general: "হ্যালো, আমি Full Moon, Sea & Seafood Night (24 Nov 2026, Coastal Heaven) ইভেন্টের ৫,৭০০ টাকা অফার সম্পর্কে জানতে চাই।",
-    afterBooking: "হ্যালো, আমি Full Moon, Sea & Seafood Night ইভেন্টের বুকিং সম্পন্ন করেছি।\n\nনাম: {name}\nসদস্য: {persons} জন\nমোট পরিশোধিত: {amount} টাকা\nTrxID: {trxId}\n\nঅনুগ্রহ করে আসনটি নিশ্চিত করুন।",
+    afterBooking: "হ্যালো, আমি Full Moon, Sea & Seafood Night ইভেন্টের বুকিং সম্পন্ন করেছি।\n\nনাম: {name}\nসদস্য: {persons} জন\nমোট পরিশোধিত: {amount} টাকা\nপেমেন্ট মেথড: {method}\nTrxID/Ref: {trxId}\n\nঅনুগ্রহ করে আসনটি নিশ্চিত করুন।",
     fallback: "ফর্ম সাবমিট করতে সমস্যা হচ্ছে, আমি Full Moon, Sea & Seafood Night ইভেন্টের জন্য বুক করতে চাই।",
   },
 

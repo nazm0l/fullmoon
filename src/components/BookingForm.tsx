@@ -20,10 +20,29 @@ import {
   Lock,
   Tag,
   Users,
-  CreditCard,
   Copy,
   Check,
+  Landmark,
 } from "lucide-react";
+
+// Official bKash Origami Logo Component
+function BkashLogo({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="bKash Logo"
+    >
+      <path d="M48.2 13.5L8.5 45.4L37.8 55.6L48.2 13.5Z" fill="#E2136E" />
+      <path d="M48.2 13.5L91.5 35.8L61.2 55.6L48.2 13.5Z" fill="#C4165E" />
+      <path d="M37.8 55.6L49.5 86.5L61.2 55.6H37.8Z" fill="#D81766" />
+      <path d="M8.5 45.4L28.5 75.2L37.8 55.6L8.5 45.4Z" fill="#F01876" />
+      <path d="M91.5 35.8L71.5 75.2L61.2 55.6L91.5 35.8Z" fill="#B01052" />
+    </svg>
+  );
+}
 
 interface FormState {
   name: string;
@@ -35,6 +54,7 @@ interface FormState {
 }
 
 export default function BookingForm() {
+  const [paymentMethod, setPaymentMethod] = useState<"bkash" | "bank">("bkash");
   const [formData, setFormData] = useState<FormState>({
     name: "",
     phone: "",
@@ -50,9 +70,14 @@ export default function BookingForm() {
     name: string;
     persons: number;
     amount: number;
+    method: "bkash" | "bank";
     trxId: string;
-  }>({ name: "", persons: 1, amount: 5700, trxId: "" });
-  const [copied, setCopied] = useState(false);
+  }>({ name: "", persons: 1, amount: 5700, method: "bkash", trxId: "" });
+
+  const [copiedBkash, setCopiedBkash] = useState(false);
+  const [copiedAccNum, setCopiedAccNum] = useState(false);
+  const [copiedRouting, setCopiedRouting] = useState(false);
+
   const [mountTime, setMountTime] = useState<number>(0);
   const [utmParams, setUtmParams] = useState({
     utm_source: "",
@@ -87,11 +112,19 @@ export default function BookingForm() {
     }
   }, []);
 
-  const handleCopyNumber = () => {
+  const handleCopy = (text: string, type: "bkash" | "acc" | "routing") => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(event.paymentNumber);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      navigator.clipboard.writeText(text);
+      if (type === "bkash") {
+        setCopiedBkash(true);
+        setTimeout(() => setCopiedBkash(false), 2000);
+      } else if (type === "acc") {
+        setCopiedAccNum(true);
+        setTimeout(() => setCopiedAccNum(false), 2000);
+      } else if (type === "routing") {
+        setCopiedRouting(true);
+        setTimeout(() => setCopiedRouting(false), 2000);
+      }
     }
   };
 
@@ -119,9 +152,12 @@ export default function BookingForm() {
     }
 
     if (!formData.transactionId.trim()) {
-      newErrors.transactionId = "মোবাইল ব্যাংকিং ট্রানজেকশন আইডি (TrxID) দিন";
-    } else if (formData.transactionId.trim().length < 4) {
-      newErrors.transactionId = "সঠিক TrxID দিন (কমপক্ষে ৪ অক্ষর)";
+      newErrors.transactionId =
+        paymentMethod === "bkash"
+          ? "বিকাশ ট্রানজেকশন আইডি (TrxID) দিন"
+          : "ব্যাংক ট্রান্সফার রেফারেন্স / ট্রানজেকশন নম্বর দিন";
+    } else if (formData.transactionId.trim().length < 3) {
+      newErrors.transactionId = "সঠিক ট্রানজেকশন / রেফারেন্স নম্বর দিন";
     }
 
     if (formData.note && formData.note.length > 300) {
@@ -145,6 +181,7 @@ export default function BookingForm() {
       name: formData.name.trim(),
       phone: normalizeBdPhone(formData.phone),
       persons: Number(formData.persons),
+      paymentMethod: paymentMethod,
       transactionId: formData.transactionId.trim(),
       note: formData.note.trim(),
       company: formData.company,
@@ -168,6 +205,7 @@ export default function BookingForm() {
           name: formData.name.trim(),
           persons: formData.persons,
           amount: totalAmount,
+          method: paymentMethod,
           trxId: formData.transactionId.trim(),
         });
         setStatus("success");
@@ -175,6 +213,7 @@ export default function BookingForm() {
           name: formData.name.trim(),
           persons: formData.persons,
           totalAmount: totalAmount,
+          paymentMethod: paymentMethod,
           transactionId: formData.transactionId.trim(),
         });
       } else {
@@ -257,7 +296,7 @@ export default function BookingForm() {
               ধন্যবাদ, {submittedData.name}!
             </h3>
             <p className="mt-2 sm:mt-3 text-xs sm:text-base text-gray-200 leading-relaxed max-w-md mx-auto">
-              আপনার বুকিং অনুরোধ ও ট্রানজেকশন সফলভাবে জমা হয়েছে। আমাদের টিম TrxID ভেরিফাই করে দ্রুত WhatsApp বা ফোনে আসন নিশ্চিত করবে।
+              আপনার বুকিং অনুরোধ ও পেমেন্ট তথ্য সফলভাবে জমা হয়েছে। আমাদের টিম ভেরিফাই করে দ্রুত WhatsApp বা ফোনে আসন নিশ্চিত করবে।
             </p>
 
             {/* Booking Summary Box */}
@@ -271,7 +310,13 @@ export default function BookingForm() {
                 <span className="text-moon-gold font-bold">{submittedData.amount.toLocaleString("en-BD")} টাকা</span>
               </div>
               <div className="flex justify-between text-gray-300">
-                <span className="font-sans">ট্রানজেকশন আইডি:</span>
+                <span className="font-sans">পেমেন্ট মাধ্যম:</span>
+                <span className="text-white font-bold">
+                  {submittedData.method === "bank" ? "City Bank Transfer" : "bKash (বিকাশ)"}
+                </span>
+              </div>
+              <div className="flex justify-between text-gray-300">
+                <span className="font-sans">TrxID / রেফারেন্স:</span>
                 <span className="text-emerald-400 font-bold">{submittedData.trxId}</span>
               </div>
             </div>
@@ -285,7 +330,8 @@ export default function BookingForm() {
                   submittedData.name,
                   submittedData.persons,
                   submittedData.amount,
-                  submittedData.trxId
+                  submittedData.trxId,
+                  submittedData.method === "bank" ? "City Bank Transfer" : "bKash"
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -384,7 +430,7 @@ export default function BookingForm() {
               )}
             </div>
 
-            {/* Generic Person Stepper (Only Persons - No Child) */}
+            {/* Generic Person Stepper (Only Persons) */}
             <div className="p-3.5 sm:p-4 rounded-2xl bg-night-950/80 border border-night-700/80 hover:border-moon-gold/30 transition-colors">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs sm:text-sm font-semibold text-gray-200 flex items-center gap-1.5">
@@ -444,59 +490,187 @@ export default function BookingForm() {
               </div>
             </div>
 
-            {/* Mobile Banking Payment Instructions & Transaction ID */}
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-br from-[#120a2e]/90 via-night-950 to-night-900 border border-indigo-500/35 space-y-3">
-              <div className="flex items-start gap-2">
-                <CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-moon-gold shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-white">
-                    মোবাইল ব্যাংকিং পেমেন্ট (bKash / Nagad / Rocket)
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-gray-300 mt-0.5 leading-relaxed">
-                    নিচের নম্বরে <strong>Send Money</strong> করে মোট <strong>{totalAmount.toLocaleString("en-BD")} টাকা</strong> পরিশোধ করুন:
+            {/* Payment Method Selector & Details */}
+            <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-br from-[#120a2e]/95 via-night-950 to-night-900 border border-indigo-500/35 space-y-3.5">
+              <div>
+                <label className="block text-xs sm:text-sm font-bold text-white mb-2">
+                  পেমেন্ট মাধ্যম বেছে নিন:
+                </label>
+                {/* 2-Option Tabs: bKash vs Bank Transfer */}
+                <div className="grid grid-cols-2 gap-2">
+                  {/* bKash Option */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPaymentMethod("bkash");
+                      if (errors.transactionId) setErrors({ ...errors, transactionId: undefined });
+                    }}
+                    className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border font-bold text-xs sm:text-sm transition-all duration-200 ${
+                      paymentMethod === "bkash"
+                        ? "bg-[#E2136E]/20 border-[#E2136E] text-white shadow-[0_0_15px_rgba(226,19,110,0.35)]"
+                        : "bg-night-900/80 border-night-700 text-gray-300 hover:border-night-600"
+                    }`}
+                  >
+                    <BkashLogo className="w-5 h-5 shrink-0" />
+                    <span>bKash (বিকাশ)</span>
+                  </button>
+
+                  {/* Bank Transfer Option */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPaymentMethod("bank");
+                      if (errors.transactionId) setErrors({ ...errors, transactionId: undefined });
+                    }}
+                    className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border font-bold text-xs sm:text-sm transition-all duration-200 ${
+                      paymentMethod === "bank"
+                        ? "bg-moon-gold/15 border-moon-gold text-white shadow-[0_0_15px_rgba(245,200,76,0.3)]"
+                        : "bg-night-900/80 border-night-700 text-gray-300 hover:border-night-600"
+                    }`}
+                  >
+                    <Landmark className="w-4 h-4 text-moon-gold shrink-0" />
+                    <span>ব্যাংক ট্রান্সফার</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Method 1: bKash Details */}
+              {paymentMethod === "bkash" ? (
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-center justify-between bg-night-900/90 border border-[#E2136E]/40 rounded-xl px-3.5 py-3 text-xs shadow-sm">
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-2">
+                        <BkashLogo className="w-5 h-5 shrink-0" />
+                        <span className="font-bold text-white text-xs sm:text-sm">
+                          bKash Personal (Send Money)
+                        </span>
+                      </div>
+                      <span className="font-mono font-extrabold text-moon-gold text-base sm:text-lg tracking-wider mt-1">
+                        {event.bkashNumberDisplay}
+                      </span>
+                      <span className="text-[11px] text-gray-300 mt-0.5">
+                        Send Money পরিমাণ: <strong>{totalAmount.toLocaleString("en-BD")} টাকা</strong>
+                      </span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(event.bkashNumber, "bkash")}
+                      className="px-3 py-1.5 rounded-lg bg-[#E2136E] hover:bg-[#c4165e] text-white text-xs font-semibold flex items-center gap-1 transition-all active:scale-95 shrink-0 shadow-sm"
+                    >
+                      {copiedBkash ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5" />}
+                      <span>{copiedBkash ? "কপি হয়েছে" : "নম্বর কপি"}</span>
+                    </button>
+                  </div>
+
+                  <p className="text-[11px] text-gray-300 leading-relaxed">
+                    💡 বিকাশ অ্যাপ অথবা <strong>*247#</strong> ডায়াল করে <strong>Send Money</strong> সম্পন্ন করার পর নিচে প্রাপ্ত TrxID দিন।
                   </p>
                 </div>
-              </div>
+              ) : (
+                /* Method 2: The City Bank Details */
+                <div className="space-y-2.5 pt-1">
+                  <div className="bg-night-900/90 border border-moon-gold/30 rounded-xl p-3 sm:p-4 text-xs font-mono space-y-2">
+                    <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
+                      <span className="text-gray-400 font-sans">ব্যাংকের নাম:</span>
+                      <strong className="text-white font-bold font-sans text-xs sm:text-sm flex items-center gap-1">
+                        <Landmark className="w-3.5 h-3.5 text-moon-gold" />
+                        {event.bankDetails.bankName}
+                      </strong>
+                    </div>
 
-              {/* Number Copy Pill */}
-              <div className="flex items-center justify-between bg-night-900/90 border border-night-700 rounded-xl px-3 py-2 text-xs">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
-                  <span className="text-moon-gold font-bold text-[11px] sm:text-xs">বিকাশ/নগদ/রকেট (Personal):</span>
-                  <span className="font-mono font-extrabold text-white text-sm tracking-wider">
-                    {event.paymentNumberDisplay}
-                  </span>
+                    <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
+                      <span className="text-gray-400 font-sans">অ্যাকাউন্টের নাম:</span>
+                      <span className="text-white font-bold font-sans text-xs sm:text-sm">
+                        {event.bankDetails.accountName}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
+                      <span className="text-gray-400 font-sans">অ্যাকাউন্ট নম্বর:</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-moon-gold font-extrabold text-sm sm:text-base tracking-wider">
+                          {event.bankDetails.accountNumber}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(event.bankDetails.accountNumber, "acc")}
+                          className="px-2 py-0.5 rounded bg-night-800 hover:bg-night-700 text-moon-gold border border-moon-gold/30 text-[10px] font-sans flex items-center gap-1 transition-all active:scale-95"
+                        >
+                          {copiedAccNum ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                          <span>{copiedAccNum ? "কপি হয়েছে" : "কপি"}</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
+                      <span className="text-gray-400 font-sans">শাখা (Branch):</span>
+                      <span className="text-gray-200 font-sans">{event.bankDetails.branch}</span>
+                    </div>
+
+                    <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
+                      <span className="text-gray-400 font-sans">রাউটিং নম্বর:</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-gray-200">{event.bankDetails.routingNumber}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(event.bankDetails.routingNumber, "routing")}
+                          className="px-2 py-0.5 rounded bg-night-800 hover:bg-night-700 text-gray-300 border border-night-600 text-[10px] font-sans flex items-center gap-1 transition-all active:scale-95"
+                        >
+                          {copiedRouting ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                          <span>{copiedRouting ? "কপি" : "কপি"}</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-400 font-sans">সুইফট কোড:</span>
+                      <span className="text-gray-200">{event.bankDetails.swiftCode}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-[11px] text-gray-300 leading-relaxed">
+                    💡 Citytouch, NPSB, BEFTN অথবা যেকোনো ব্যাংক থেকে ফান্ড ট্রান্সফার করে নিচের ঘরে ট্রানজেকশন / রেফারেন্স আইডি দিন।
+                  </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleCopyNumber}
-                  className="px-2.5 py-1 rounded-lg bg-night-800 hover:bg-night-700 text-moon-gold border border-moon-gold/30 text-xs font-semibold flex items-center gap-1 transition-all active:scale-95 shrink-0"
-                >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? "কপি হয়েছে" : "কপি"}</span>
-                </button>
-              </div>
+              )}
 
-              {/* Transaction ID input */}
-              <div>
-                <label htmlFor={trxInputId} className="block text-xs sm:text-sm font-semibold text-gray-200 mb-1 flex items-center justify-between">
+              {/* Transaction ID / Reference Input Field */}
+              <div className="pt-1 border-t border-night-700/60">
+                <label
+                  htmlFor={trxInputId}
+                  className="block text-xs sm:text-sm font-semibold text-gray-200 mb-1 flex items-center justify-between"
+                >
                   <span className="flex items-center gap-1">
-                    <span>ট্রানজেকশন আইডি (TrxID)</span>
+                    <span>
+                      {paymentMethod === "bkash"
+                        ? "বিকাশ ট্রানজেকশন আইডি (bKash TrxID)"
+                        : "ব্যাংক ট্রান্সফার রেফারেন্স / ট্রানজেকশন আইডি"}
+                    </span>
                     <span className="text-moon-gold">*</span>
                   </span>
-                  <span className="text-[10px] sm:text-[11px] font-normal text-gray-400">যেমন: 8N7A6B5C4D</span>
+                  <span className="text-[10px] sm:text-[11px] font-normal text-gray-400">
+                    {paymentMethod === "bkash" ? "যেমন: 8N7A6B5C4D" : "যেমন: FT2611870023"}
+                  </span>
                 </label>
                 <input
                   id={trxInputId}
                   type="text"
                   required
-                  placeholder="মোবাইল ব্যাংকিং TrxID লিখুন"
+                  placeholder={
+                    paymentMethod === "bkash"
+                      ? "বিকাশ TrxID লিখুন"
+                      : "ব্যাংক ট্রান্সফার রেফারেন্স নম্বর লিখুন"
+                  }
                   value={formData.transactionId}
                   onChange={(e) => {
                     setFormData({ ...formData, transactionId: e.target.value.toUpperCase() });
                     if (errors.transactionId) setErrors({ ...errors, transactionId: undefined });
                   }}
                   className={`w-full min-h-[46px] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-night-950 border ${
-                    errors.transactionId ? "border-red-500 ring-1 ring-red-500" : "border-night-700 focus:border-moon-gold focus:ring-1 focus:ring-moon-gold"
+                    errors.transactionId
+                      ? "border-red-500 ring-1 ring-red-500"
+                      : "border-night-700 focus:border-moon-gold focus:ring-1 focus:ring-moon-gold"
                   } text-white font-mono placeholder-gray-400 focus:outline-none transition-all text-sm uppercase tracking-wider`}
                 />
                 {errors.transactionId && (

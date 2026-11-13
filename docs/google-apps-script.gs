@@ -4,7 +4,7 @@
  * Instructions:
  * 1. Open Google Sheet, rename first tab to "Leads".
  * 2. Add header row in Row 1:
- *    createdAt | name | phone | persons | totalAmount | transactionId | note | utm_source | utm_medium | utm_campaign | utm_content | referrer | page_url
+ *    createdAt | name | phone | persons | totalAmount | paymentMethod | transactionId | note | utm_source | utm_medium | utm_campaign | utm_content | referrer | page_url
  * 3. Extensions > Apps Script > Paste this script.
  * 4. Project Settings > Script Properties > Add Property:
  *    Key: SECRET
@@ -35,6 +35,7 @@ function doPost(e) {
       "'" + data.phone,
       data.persons || data.adults || 1,
       data.totalAmount || "",
+      data.paymentMethod || "bKash",
       data.transactionId || "",
       data.note,
       data.utm_source,

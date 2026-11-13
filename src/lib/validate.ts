@@ -56,13 +56,16 @@ export const leadFormSchema = z.object({
     .min(1, "কমপক্ষে ১ জন হতে হবে")
     .max(20, "একবারে সর্বোচ্চ ২০ জনের বুকিং সম্ভব")
     .default(1),
+  paymentMethod: z
+    .enum(["bkash", "bank"])
+    .default("bkash"),
   transactionId: z
     .string({
-      error: "মোবাইল ব্যাংকিং ট্রানজেকশন আইডি দিন",
+      error: "পেমেন্ট ট্রানজেকশন আইডি / রেফারেন্স নম্বর দিন",
     })
     .trim()
-    .min(4, "সঠিক TrxID / Transaction ID দিন (কমপক্ষে ৪ অক্ষর)")
-    .max(40, "TrxID সর্বোচ্চ ৪০ অক্ষরের হতে পারে"),
+    .min(3, "সঠিক TrxID বা ব্যাংক রেফারেন্স নম্বর দিন")
+    .max(50, "TrxID বা রেফারেন্স নম্বর সর্বোচ্চ ৫০ অক্ষরের হতে পারে"),
   note: z
     .string()
     .max(300, "বিশেষ নোট সর্বোচ্চ ৩০০ অক্ষরের মধ্যে লিখুন")
