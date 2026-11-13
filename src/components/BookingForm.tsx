@@ -49,7 +49,6 @@ interface FormState {
   phone: string;
   persons: number;
   transactionId: string;
-  note: string;
   company: string; // Honeypot
 }
 
@@ -60,7 +59,6 @@ export default function BookingForm() {
     phone: "",
     persons: 1,
     transactionId: "",
-    note: "",
     company: "",
   });
 
@@ -91,7 +89,6 @@ export default function BookingForm() {
   const nameInputId = useId();
   const phoneInputId = useId();
   const trxInputId = useId();
-  const noteInputId = useId();
 
   // Price calculations based on discounted price 5,700 TK
   const unitPrice = event.priceNumber || 5700;
@@ -160,10 +157,6 @@ export default function BookingForm() {
       newErrors.transactionId = "সঠিক ট্রানজেকশন / রেফারেন্স নম্বর দিন";
     }
 
-    if (formData.note && formData.note.length > 300) {
-      newErrors.note = "নোট সর্বোচ্চ ৩০০ অক্ষরের মধ্যে লিখুন";
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -183,7 +176,7 @@ export default function BookingForm() {
       persons: Number(formData.persons),
       paymentMethod: paymentMethod,
       transactionId: formData.transactionId.trim(),
-      note: formData.note.trim(),
+      note: "",
       company: formData.company,
       ts: mountTime,
       ...utmParams,
@@ -677,22 +670,6 @@ export default function BookingForm() {
                   <p className="mt-1 text-xs text-red-400">{errors.transactionId}</p>
                 )}
               </div>
-            </div>
-
-            {/* Note */}
-            <div>
-              <label htmlFor={noteInputId} className="block text-xs sm:text-sm font-semibold text-gray-200 mb-1">
-                বিশেষ কোনো নোট বা পছন্দ (ঐচ্ছিক)
-              </label>
-              <textarea
-                id={noteInputId}
-                rows={2}
-                maxLength={300}
-                placeholder="যেমন: খাবারের বিশেষ অ্যালার্জি, টেবিল পছন্দ ইত্যাদি"
-                value={formData.note}
-                onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-                className="w-full px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-night-950/90 border border-night-700/80 focus:border-moon-gold focus:ring-1 focus:ring-moon-gold text-white placeholder-gray-400 focus:outline-none transition-all text-xs sm:text-sm resize-none"
-              />
             </div>
 
             {/* Submit Button */}
