@@ -1,6 +1,5 @@
 import FullMoonBackground from "@/components/FullMoonBackground";
 import Hero from "@/components/Hero";
-import CoreExperience from "@/components/CoreExperience";
 import Timeline from "@/components/Timeline";
 import BookingForm from "@/components/BookingForm";
 import Footer from "@/components/Footer";
@@ -15,19 +14,16 @@ export default function Home() {
       {/* 1. Hero Section (Recreating the Official Event Poster) */}
       <Hero />
 
-      {/* 2. The Core Highlights */}
-      <CoreExperience />
-
-      {/* 3. Event Night Timeline */}
+      {/* 2. Event Night Timeline & Full Schedule */}
       <Timeline />
 
-      {/* 4. Booking Form */}
+      {/* 3. Booking & Payment Form */}
       <BookingForm />
 
-      {/* 5. Footer */}
+      {/* 4. Footer */}
       <Footer />
 
-      {/* 6. Floating WhatsApp Assistance */}
+      {/* 5. Floating WhatsApp Assistance */}
       <WhatsAppFab />
     </main>
   );
