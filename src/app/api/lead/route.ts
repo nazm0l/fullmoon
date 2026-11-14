@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { leadFormSchema, normalizeBdPhone } from "@/lib/validate";
+import { event } from "@/content/event";
 
 // In-memory rate limiting map: ip -> timestamps[]
 // Note: In serverless environments (e.g. Vercel), memory is not shared across instances/lambdas.
@@ -93,7 +94,7 @@ export async function POST(req: NextRequest) {
     // 4. Normalise Phone & Build Lead Record
     const normalizedPhone = normalizeBdPhone(data.phone);
     const createdAt = getDhakaTimeString();
-    const unitPrice = 5700;
+    const unitPrice = event.priceNumber || 5880;
     const totalAmount = data.persons * unitPrice;
     const formattedAmount = `${totalAmount.toLocaleString("en-BD")} TK`;
 

@@ -68,7 +68,7 @@ export default function BookingForm() {
     amount: number;
     method: "bkash" | "bank";
     trxId: string;
-  }>({ name: "", persons: 1, amount: 5700, method: "bkash", trxId: "" });
+  }>({ name: "", persons: 1, amount: 5880, method: "bkash", trxId: "" });
 
   const [copiedBkash, setCopiedBkash] = useState(false);
   const [copiedAccNum, setCopiedAccNum] = useState(false);
@@ -88,8 +88,8 @@ export default function BookingForm() {
   const phoneInputId = useId();
   const trxInputId = useId();
 
-  // Price calculations based on discounted price 5,700 TK
-  const unitPrice = event.priceNumber || 5700;
+  // Price calculations based on discounted price 5,880 TK (40% off 9,800 TK)
+  const unitPrice = event.priceNumber || 5880;
   const totalAmount = formData.persons * unitPrice;
 
   useEffect(() => {
@@ -430,7 +430,7 @@ export default function BookingForm() {
                   <span className="text-moon-gold">*</span>
                 </span>
                 <span className="text-[11px] text-moon-gold-light bg-moon-gold/10 px-2 py-0.5 rounded-full border border-moon-gold/20 font-medium">
-                  জনপ্রতি ৫,৭০০ টাকা
+                  জনপ্রতি ৫,৮৮০ টাকা
                 </span>
               </div>
               <div className="flex items-center justify-between">
@@ -467,7 +467,7 @@ export default function BookingForm() {
               <div className="flex items-center justify-between border-b border-night-700/70 pb-2 mb-2 text-xs sm:text-sm">
                 <span className="text-gray-300">হিসাব:</span>
                 <span className="text-gray-200 font-mono">
-                  {formData.persons} জন × ৫,৭০০ টাকা
+                  {formData.persons} জন × ৫,৮৮০ টাকা
                 </span>
               </div>
               <div className="flex items-center justify-between">

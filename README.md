@@ -11,7 +11,7 @@ A high-converting, mobile-first, Bangla-first event booking landing page built w
 
 - **Theme & Design:** Immersive living full moon ambient night sky background with starlight twinkle and ocean shimmer. Styled directly based on official event posters.
 - **Mobile-First UX:** Streamlined, tight vertical spacing tuned for 360-390px mobile screens.
-- **Dynamic Pricing & Calculation:** Highlights the 40% discount (5,700 TK vs 9,500 TK) with instant dynamic total calculation based on person count.
+- **Dynamic Pricing & Calculation:** Highlights the 40% discount (5,880 TK vs 9,800 TK) with instant dynamic total calculation based on person count.
 - **Mobile Banking Integration:** bKash / Nagad / Rocket send money instructions with one-click copy button and required transaction ID (`TrxID`) collection.
 - **Icons:** Powered entirely by `lucide-react` icons.
 - **Zero Database / Zero CMS:** Server-side lead route (`/api/lead`) forwards bookings directly to Google Sheets via Google Apps Script and optional Telegram bot notifications.

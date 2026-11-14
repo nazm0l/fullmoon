@@ -25,7 +25,7 @@ export function getBookingSuccessWhatsAppLink(
   let message = event.whatsappMessages.afterBooking
     .replace("{name}", name)
     .replace("{persons}", persons ? String(persons) : "১")
-    .replace("{amount}", amount ? amount.toLocaleString("en-BD") : "৫,৭০০")
+    .replace("{amount}", amount ? amount.toLocaleString("en-BD") : "৫,৮৮০")
     .replace("{method}", method || "bKash")
     .replace("{trxId}", trxId || "N/A");
   return buildWhatsAppLink(message);

@@ -25,10 +25,10 @@ export const event = {
   venueBn: "কোস্টাল হেভেন, কক্সবাজার",
   
   // Pricing from official posters
-  regularPrice: "9,500 TK",
+  regularPrice: "9,800 TK",
   discountPercent: "40%",
-  discountedPrice: "5,700 TK",
-  priceNumber: 5700,
+  discountedPrice: "5,880 TK",
+  priceNumber: 5880,
   priceUnit: "per person",
   priceUnitBn: "জনপ্রতি",
   
@@ -173,7 +173,7 @@ export const event = {
   ],
 
   whatsappMessages: {
-    general: "হ্যালো, আমি Full Moon, Sea & Seafood Night (24 Nov 2026, Coastal Heaven) ইভেন্টের ৫,৭০০ টাকা অফার সম্পর্কে জানতে চাই।",
+    general: "হ্যালো, আমি Full Moon, Sea & Seafood Night (24 Nov 2026, Coastal Heaven) ইভেন্টের ৫,৮৮০ টাকা অফার সম্পর্কে জানতে চাই।",
     afterBooking: "হ্যালো, আমি Full Moon, Sea & Seafood Night ইভেন্টের বুকিং সম্পন্ন করেছি।\n\nনাম: {name}\nসদস্য: {persons} জন\nমোট পরিশোধিত: {amount} টাকা\nপেমেন্ট মেথড: {method}\nTrxID/Ref: {trxId}\n\nঅনুগ্রহ করে আসনটি নিশ্চিত করুন।",
     fallback: "ফর্ম সাবমিট করতে সমস্যা হচ্ছে, আমি Full Moon, Sea & Seafood Night ইভেন্টের জন্য বুক করতে চাই।",
   },
