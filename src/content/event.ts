@@ -160,7 +160,6 @@ export const event = {
     {
       time: "5:00 AM",
       title: "The Magic Hour: সমুদ্র ও চাঁদ কাছাকাছি",
-      subtitle: "পূর্ণিমার চাঁদ ও সমুদ্রের মায়াবী মিলনক্ষণ",
       isMagicHour: true,
       items: ["Moonlit Horizon", "Ocean Breeze", "Quiet Moments"],
     },
