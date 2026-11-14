@@ -84,7 +84,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-[11px] text-gray-500 mt-2">
-          © {currentYear} Remark. All rights reserved.
+          © {currentYear} Remark International. All rights reserved.
         </div>
       </div>
     </footer>

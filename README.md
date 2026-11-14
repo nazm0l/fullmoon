@@ -91,4 +91,4 @@ src/
 
 ## 📄 License
 
-Proprietary © 2026 Remark. All rights reserved.
+Proprietary © 2026 Remark International. All rights reserved.
