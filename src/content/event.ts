@@ -33,8 +33,8 @@ export const event = {
   priceUnitBn: "জনপ্রতি",
   
   // Payment Details (bKash & Bank Transfer)
-  bkashNumber: "01332220011",
-  bkashNumberDisplay: "01332 220011",
+  bkashNumber: "01817152000",
+  bkashNumberDisplay: "01817 152000",
   bkashType: "Personal (Send Money)",
 
   bankDetails: {
