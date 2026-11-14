@@ -33,8 +33,8 @@ export const event = {
   priceUnitBn: "জনপ্রতি",
   
   // Payment Details (bKash & Bank Transfer)
-  bkashNumber: "01816856022",
-  bkashNumberDisplay: "01816 856022",
+  bkashNumber: "01332220011",
+  bkashNumberDisplay: "01332 220011",
   bkashType: "Personal (Send Money)",
 
   bankDetails: {
@@ -49,9 +49,9 @@ export const event = {
   organizer: "Remark",
   organizerDisplay: "Presented by: Remark",
   
-  phone1: "01816 856022",
+  phone1: "01332 220011",
   phone2: "01734 737894",
-  whatsappNumber: "8801816856022",
+  whatsappNumber: "8801332220011",
   
   disclaimer: "Note: Visibility of the full moon and moonlit sea depends on weather conditions.",
   disclaimerBn: "বিশেষ দ্রষ্টব্য: আবহাওয়া ও মেঘের পরিস্থিতির ওপর পূর্ণিমা ও চাঁদের আলো দৃশ্যমানতা নির্ভরশীল।",

@@ -36,7 +36,7 @@ cp .env.example .env.local
 ```
 
 Configure:
-- `NEXT_PUBLIC_WHATSAPP_NUMBER`: Organizer WhatsApp number (e.g. `8801816856022`)
+- `NEXT_PUBLIC_WHATSAPP_NUMBER`: Organizer WhatsApp number (e.g. `8801332220011`)
 - `GOOGLE_SCRIPT_URL`: Google Apps Script Web App URL (for Google Sheets storage)
 - `GOOGLE_SCRIPT_SECRET`: Shared webhook secret
 - `TELEGRAM_BOT_TOKEN` & `TELEGRAM_CHAT_ID`: (Optional) Instant Telegram notifications
