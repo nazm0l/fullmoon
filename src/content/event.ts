@@ -120,7 +120,6 @@ export const event = {
       time: "11:00 PM",
       title: "Welcome Reception",
       subtitle: "Welcome Drinks & Flowers",
-      items: ["Welcome Drinks", "Flowers Reception"],
     },
     {
       time: "11:15 PM",
@@ -143,19 +142,16 @@ export const event = {
       time: "12:30 AM",
       title: "Midnight Delights",
       subtitle: "Crab Fry • Tea • Water",
-      items: ["Crab Fry", "Tea", "Water"],
     },
     {
       time: "2:30 AM",
       title: "Late-Night Snacks",
       subtitle: "BBQ Squid • Muri Makha • Water",
-      items: ["BBQ Squid", "Muri Makha", "Water"],
     },
     {
       time: "4:30 AM",
       title: "Early Morning Treats",
       subtitle: "Seafood Khichuri • Fresh Juice • Tea • Water",
-      items: ["Seafood Khichuri", "Fresh Juice", "Tea", "Water"],
     },
     {
       time: "5:00 AM",
@@ -167,7 +163,6 @@ export const event = {
       time: "5:15 AM",
       title: "Closing",
       subtitle: "বিদায়ী অভিবাদন ও শুভ সকাল",
-      items: ["Departure"],
     },
   ],
 
