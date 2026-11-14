@@ -167,9 +167,9 @@ export const event = {
   ],
 
   whatsappMessages: {
-    general: "হ্যালো, আমি Full Moon, Sea & Seafood Night (24 Nov 2026, Coastal Heaven) ইভেন্টের ৫,৮৮০ টাকা অফার সম্পর্কে জানতে চাই।",
-    afterBooking: "হ্যালো, আমি Full Moon, Sea & Seafood Night ইভেন্টের বুকিং সম্পন্ন করেছি।\n\nনাম: {name}\nসদস্য: {persons} জন\nমোট পরিশোধিত: {amount} টাকা\nপেমেন্ট মেথড: {method}\nTrxID/Ref: {trxId}\n\nঅনুগ্রহ করে আসনটি নিশ্চিত করুন।",
-    fallback: "ফর্ম সাবমিট করতে সমস্যা হচ্ছে, আমি Full Moon, Sea & Seafood Night ইভেন্টের জন্য বুক করতে চাই।",
+    general: "হ্যালো, আমি Full Moon, Sea & Seafood Night (24 Nov 2026, Coastal Heaven) ইভেন্ট সম্পর্কে জানতে চাই।",
+    afterBooking: "Hello, I have submitted my booking for Full Moon, Sea & Seafood Night.\n\nName: {name}\nPersons: {persons}\nPayment Method: {method}\nTrxID/Ref: {trxId}\n\nPlease confirm my reservation.",
+    fallback: "হ্যালো, আমি Full Moon, Sea & Seafood Night ইভেন্টের জন্য বুক করতে চাই।",
   },
 
   cta: {
