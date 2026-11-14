@@ -34,7 +34,7 @@ export const event = {
   
   // Payment Details (bKash & Bank Transfer)
   bkashNumber: "01817152000",
-  bkashNumberDisplay: "01817 152000",
+  bkashNumberDisplay: "01817152000",
   bkashType: "Personal (Send Money)",
 
   bankDetails: {
