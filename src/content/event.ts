@@ -47,7 +47,7 @@ export const event = {
   },
   
   organizer: "Remark",
-  organizerDisplay: "Organized By: Remark",
+  organizerDisplay: "Presented by: Remark",
   
   phone1: "01816 856022",
   phone2: "01734 737894",

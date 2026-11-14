@@ -1,7 +1,7 @@
 # Full Moon, Sea & Seafood Night — Landing Page
 
 > **জোছনা মাখা সমুদ্র, মুগ্ধতার এক রাত**  
-> Event Date: 24 November 2026 | Venue: Coastal Heaven, Cox's Bazar | Organized By: Remark
+> Event Date: 24 November 2026 | Venue: Coastal Heaven, Cox's Bazar | Presented by: Remark
 
 A high-converting, mobile-first, Bangla-first event booking landing page built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS**.
 

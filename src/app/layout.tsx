@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Full Moon, Sea & Seafood Night | 24 November 2026",
-    description: "জোছনা মাখা সমুদ্র, মুগ্ধতার এক রাত • Coastal Heaven, Cox's Bazar • Organized by Remark",
+    description: "জোছনা মাখা সমুদ্র, মুগ্ধতার এক রাত • Coastal Heaven, Cox's Bazar • Presented by Remark",
     type: "website",
     locale: "bn_BD",
     siteName: "Full Moon, Sea & Seafood Night",

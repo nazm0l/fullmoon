@@ -65,7 +65,7 @@ export default function Footer() {
         {/* Organizer Logo & Official Poster Disclaimer */}
         <div className="w-full max-w-lg border-t border-night-800/80 mt-6 pt-6 space-y-4">
           <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-gray-400 font-medium tracking-wide">Organized By:</span>
+            <span className="text-xs text-gray-400 font-medium tracking-wide">Presented by:</span>
             <div className="inline-flex items-center justify-center bg-white px-4 py-2 rounded-xl shadow-md hover:scale-105 transition-transform">
               <Image
                 src="/images/remark-logo.png"
