@@ -10,10 +10,7 @@ export default function Timeline() {
           <Clock className="w-3.5 h-3.5 text-moon-gold" />
           <span>EVENT SCHEDULE (11 PM TO 5 AM)</span>
         </span>
-        <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-3 sm:mt-4 tracking-tight">
-          পূর্ণিমা রাতের পূর্ণাঙ্গ সময়সূচী
-        </h2>
-        <p className="text-xs sm:text-base text-gray-300 mt-1.5 sm:mt-2 max-w-lg mx-auto">
+        <p className="text-xs sm:text-base text-gray-300 mt-2 sm:mt-3 max-w-lg mx-auto">
           {event.date} • {event.venue}
         </p>
       </Reveal>

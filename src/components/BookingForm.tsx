@@ -127,32 +127,32 @@ export default function BookingForm() {
     const newErrors: Partial<Record<keyof FormState, string>> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "অনুগ্রহ করে আপনার নাম লিখুন";
+      newErrors.name = "Please enter your full name";
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = "নাম কমপক্ষে ২ অক্ষরের হতে হবে";
+      newErrors.name = "Name must be at least 2 characters";
     } else if (formData.name.trim().length > 60) {
-      newErrors.name = "নাম সর্বোচ্চ ৬০ অক্ষরের মধ্যে হতে হবে";
+      newErrors.name = "Name must be under 60 characters";
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = "সচল মোবাইল নম্বর দিন";
+      newErrors.phone = "Please enter your mobile number";
     } else if (!isValidBdPhone(formData.phone)) {
-      newErrors.phone = "সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন (যেমন: 017XXXXXXXX বা 018XXXXXXXX)";
+      newErrors.phone = "Please enter a valid 11-digit mobile number (e.g. 017XXXXXXXX or 018XXXXXXXX)";
     }
 
     if (formData.persons < 1) {
-      newErrors.persons = "কমপক্ষে ১ জন সদস্য নির্বাচন করুন";
+      newErrors.persons = "Please select at least 1 person";
     } else if (formData.persons > 20) {
-      newErrors.persons = "একবারে সর্বোচ্চ ২০ জনের বুকিং সম্ভব";
+      newErrors.persons = "Maximum 20 persons per booking";
     }
 
     if (!formData.transactionId.trim()) {
       newErrors.transactionId =
         paymentMethod === "bkash"
-          ? "বিকাশ ট্রানজেকশন আইডি (TrxID) দিন"
-          : "ব্যাংক ট্রান্সফার রেফারেন্স / ট্রানজেকশন নম্বর দিন";
+          ? "Please enter your bKash TrxID"
+          : "Please enter your bank transfer reference ID";
     } else if (formData.transactionId.trim().length < 3) {
-      newErrors.transactionId = "সঠিক ট্রানজেকশন / রেফারেন্স নম্বর দিন";
+      newErrors.transactionId = "Please enter a valid transaction / reference ID";
     }
 
     setErrors(newErrors);
@@ -230,10 +230,7 @@ export default function BookingForm() {
           <Tag className="w-3.5 h-3.5 text-moon-gold" />
           <span>RESERVATION &amp; PAYMENT</span>
         </span>
-        <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-3 sm:mt-4 tracking-tight">
-          আপনার আসনটি সংরক্ষণ করুন
-        </h2>
-        <div className="mt-1.5 sm:mt-2 flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-gray-300">
+        <div className="mt-2 sm:mt-3 flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-gray-300">
           <span className="flex items-center gap-1 text-moon-gold font-medium">
             <Calendar className="w-3.5 h-3.5" />
             {event.date}
@@ -260,8 +257,8 @@ export default function BookingForm() {
               {event.discountPercent} OFF
             </span>
             <span className="text-gray-300">
-              মূল্য: <del className="text-gray-400">{event.regularPrice}</del>{" "}
-              <strong className="text-moon-gold font-bold text-sm sm:text-base">{event.discountedPrice}</strong> {event.priceUnitBn}
+              Price: <del className="text-gray-400">{event.regularPrice}</del>{" "}
+              <strong className="text-moon-gold font-bold text-sm sm:text-base">{event.discountedPrice}</strong> {event.priceUnit}
             </span>
           </div>
 
@@ -284,37 +281,37 @@ export default function BookingForm() {
               <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10" />
             </div>
             <h3 className="text-xl sm:text-3xl font-bold text-white">
-              ধন্যবাদ, {submittedData.name}!
+              Thank You, {submittedData.name}!
             </h3>
             <p className="mt-2 sm:mt-3 text-xs sm:text-base text-gray-200 leading-relaxed max-w-md mx-auto">
-              আপনার বুকিং অনুরোধ ও পেমেন্ট তথ্য সফলভাবে জমা হয়েছে। আমাদের টিম ভেরিফাই করে দ্রুত WhatsApp বা ফোনে আসন নিশ্চিত করবে।
+              Your booking request and payment details have been submitted successfully. Our team will verify and confirm your seats via WhatsApp or phone call.
             </p>
 
             {/* Booking Summary Box */}
             <div className="mt-4 p-4 rounded-2xl bg-night-950/80 border border-night-700/80 text-left text-xs sm:text-sm max-w-md mx-auto space-y-1.5 font-mono">
               <div className="flex justify-between text-gray-300">
-                <span className="font-sans">বুকিং সদস্য:</span>
-                <span className="text-white font-bold">{submittedData.persons} জন</span>
+                <span className="font-sans">Reserved Seats:</span>
+                <span className="text-white font-bold">{submittedData.persons} {submittedData.persons === 1 ? "Person" : "Persons"}</span>
               </div>
               <div className="flex justify-between text-gray-300">
-                <span className="font-sans">মোট পরিশোধিত:</span>
-                <span className="text-moon-gold font-bold">{submittedData.amount.toLocaleString("en-BD")} টাকা</span>
+                <span className="font-sans">Total Paid:</span>
+                <span className="text-moon-gold font-bold">{submittedData.amount.toLocaleString("en-BD")} TK</span>
               </div>
               <div className="flex justify-between text-gray-300">
-                <span className="font-sans">পেমেন্ট মাধ্যম:</span>
+                <span className="font-sans">Payment Method:</span>
                 <span className="text-white font-bold">
-                  {submittedData.method === "bank" ? "City Bank Transfer" : "bKash (বিকাশ)"}
+                  {submittedData.method === "bank" ? "The City Bank Transfer" : "bKash"}
                 </span>
               </div>
               <div className="flex justify-between text-gray-300">
-                <span className="font-sans">TrxID / রেফারেন্স:</span>
+                <span className="font-sans">TrxID / Reference:</span>
                 <span className="text-emerald-400 font-bold">{submittedData.trxId}</span>
               </div>
             </div>
 
             <div className="mt-6 pt-5 border-t border-night-800 flex flex-col items-center">
               <p className="text-xs text-gray-300 mb-3">
-                তাৎক্ষণিক কনফার্মেশনের জন্য সরাসরি WhatsApp-এ বার্তা দিন:
+                For instant confirmation, message us directly on WhatsApp:
               </p>
               <a
                 href={getBookingSuccessWhatsAppLink(
@@ -329,7 +326,7 @@ export default function BookingForm() {
                 className="inline-flex items-center justify-center min-h-[48px] sm:min-h-[52px] px-6 sm:px-8 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-sm sm:text-base shadow-[0_0_25px_rgba(37,211,102,0.4)] transition-all transform hover:scale-105 active:scale-95 gap-2"
               >
                 <MessageCircle className="w-5 h-5 fill-current" />
-                <span>WhatsApp-এ কনফার্ম করুন</span>
+                <span>Confirm on WhatsApp</span>
               </a>
             </div>
           </div>
@@ -355,7 +352,7 @@ export default function BookingForm() {
               <div className="p-3.5 sm:p-4 rounded-2xl bg-red-950/80 border border-red-500/50 text-red-200 text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
                 <div className="flex items-start gap-2">
                   <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                  <span className="leading-snug">সংযোগ সমস্যার কারণে তথ্য পাঠানো যায়নি। WhatsApp-এ সরাসরি মেসেজ দিন:</span>
+                  <span className="leading-snug">Connection issue while submitting details. Please message us directly on WhatsApp:</span>
                 </div>
                 <a
                   href={getFailureFallbackWhatsAppLink()}
@@ -363,7 +360,7 @@ export default function BookingForm() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center min-h-[40px] px-4 py-2 rounded-xl bg-moon-gold text-night-950 font-bold text-xs shrink-0 hover:bg-moon-gold-hover transition-colors shadow-sm"
                 >
-                  WhatsApp-এ বুক করুন
+                  Book via WhatsApp
                 </a>
               </div>
             )}
@@ -371,14 +368,14 @@ export default function BookingForm() {
             {/* Full Name */}
             <div>
               <label htmlFor={nameInputId} className="block text-xs sm:text-sm font-semibold text-gray-200 mb-1.5">
-                আপনার নাম <span className="text-moon-gold">*</span>
+                Full Name <span className="text-moon-gold">*</span>
               </label>
               <input
                 id={nameInputId}
                 type="text"
                 required
                 maxLength={60}
-                placeholder="যেমন: তানজির আহমেদ"
+                placeholder="e.g. Tanzeer Ahmed"
                 value={formData.name}
                 onChange={(e) => {
                   setFormData({ ...formData, name: e.target.value });
@@ -394,14 +391,14 @@ export default function BookingForm() {
             {/* Mobile / WhatsApp Number */}
             <div>
               <label htmlFor={phoneInputId} className="block text-xs sm:text-sm font-semibold text-gray-200 mb-1.5 flex items-center justify-between">
-                <span>মোবাইল নম্বর (WhatsApp সচল) <span className="text-moon-gold">*</span></span>
-                <span className="text-[11px] font-normal text-gray-400">018... বা 017...</span>
+                <span>Mobile Number (Active WhatsApp) <span className="text-moon-gold">*</span></span>
+                <span className="text-[11px] font-normal text-gray-400">e.g. 017... or 018...</span>
               </label>
               <input
                 id={phoneInputId}
                 type="tel"
                 required
-                placeholder="018XXXXXXXX বা 017XXXXXXXX"
+                placeholder="018XXXXXXXX or 017XXXXXXXX"
                 value={formData.phone}
                 onChange={(e) => {
                   setFormData({ ...formData, phone: e.target.value });
@@ -416,7 +413,7 @@ export default function BookingForm() {
               ) : (
                 <p className="mt-1 text-[11px] text-gray-400 flex items-center gap-1">
                   <Phone className="w-3 h-3 text-moon-gold" />
-                  <span>এই নম্বরেই আমরা আসন নিশ্চিতকরণের তথ্য পাঠাব</span>
+                  <span>We will send your seat confirmation to this number</span>
                 </p>
               )}
             </div>
@@ -426,11 +423,11 @@ export default function BookingForm() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs sm:text-sm font-semibold text-gray-200 flex items-center gap-1.5">
                   <Users className="w-4 h-4 text-moon-gold" />
-                  <span>সদস্য সংখ্যা (Person)</span>
+                  <span>Number of Persons</span>
                   <span className="text-moon-gold">*</span>
                 </span>
                 <span className="text-[11px] text-moon-gold-light bg-moon-gold/10 px-2 py-0.5 rounded-full border border-moon-gold/20 font-medium">
-                  জনপ্রতি ৫,৮৮০ টাকা
+                  5,880 TK per person
                 </span>
               </div>
               <div className="flex items-center justify-between">
@@ -438,22 +435,22 @@ export default function BookingForm() {
                   type="button"
                   onClick={() => handleStepper(-1)}
                   disabled={formData.persons <= 1}
-                  aria-label="সদস্য কমান"
+                  aria-label="Decrease persons"
                   className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-night-800 hover:bg-night-700 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed border border-night-600 text-white font-bold flex items-center justify-center transition-all text-lg"
                 >
                   <Minus className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
                 <div className="flex flex-col items-center">
                   <span className="text-xl sm:text-2xl font-extrabold text-moon-gold px-3">
-                    {formData.persons} জন
+                    {formData.persons} {formData.persons === 1 ? "Person" : "Persons"}
                   </span>
-                  <span className="text-[10px] text-gray-400">বুকিং আসন</span>
+                  <span className="text-[10px] text-gray-400">Reserved Seats</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleStepper(1)}
                   disabled={formData.persons >= 20}
-                  aria-label="সদস্য বাড়ান"
+                  aria-label="Increase persons"
                   className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-night-800 hover:bg-night-700 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed border border-night-600 text-white font-bold flex items-center justify-center transition-all text-lg"
                 >
                   <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -465,18 +462,18 @@ export default function BookingForm() {
             {/* Dynamic Calculated Amount Box */}
             <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-br from-moon-gold/15 via-night-900 to-night-950 border border-moon-gold/30 shadow-md">
               <div className="flex items-center justify-between border-b border-night-700/70 pb-2 mb-2 text-xs sm:text-sm">
-                <span className="text-gray-300">হিসাব:</span>
+                <span className="text-gray-300">Calculation:</span>
                 <span className="text-gray-200 font-mono">
-                  {formData.persons} জন × ৫,৮৮০ টাকা
+                  {formData.persons} {formData.persons === 1 ? "Person" : "Persons"} × 5,880 TK
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
                   <Tag className="w-4 h-4 text-moon-gold" />
-                  মোট প্রদেয় অর্থ (৪০% ছাড়ে):
+                  Total Payable (40% Off):
                 </span>
                 <span className="text-lg sm:text-2xl font-extrabold text-moon-gold font-mono drop-shadow-[0_0_12px_rgba(245,200,76,0.5)]">
-                  {totalAmount.toLocaleString("en-BD")} টাকা
+                  {totalAmount.toLocaleString("en-BD")} TK
                 </span>
               </div>
             </div>
@@ -485,7 +482,7 @@ export default function BookingForm() {
             <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-br from-[#120a2e]/95 via-night-950 to-night-900 border border-indigo-500/35 space-y-3.5">
               <div>
                 <label className="block text-xs sm:text-sm font-bold text-white mb-2">
-                  পেমেন্ট মাধ্যম বেছে নিন:
+                  Select Payment Method:
                 </label>
                 {/* 2-Option Tabs: bKash vs Bank Transfer */}
                 <div className="grid grid-cols-2 gap-2">
@@ -503,7 +500,7 @@ export default function BookingForm() {
                     }`}
                   >
                     <BkashLogo className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                    <span>bKash (বিকাশ)</span>
+                    <span>bKash</span>
                   </button>
 
                   {/* Bank Transfer Option */}
@@ -520,7 +517,7 @@ export default function BookingForm() {
                     }`}
                   >
                     <Landmark className="w-4 h-4 sm:w-5 sm:h-5 text-moon-gold shrink-0" />
-                    <span>ব্যাংক ট্রান্সফার</span>
+                    <span>Bank Transfer</span>
                   </button>
                 </div>
               </div>
@@ -540,7 +537,7 @@ export default function BookingForm() {
                         {event.bkashNumberDisplay}
                       </span>
                       <span className="text-[11px] text-gray-300 mt-0.5">
-                        Send Money পরিমাণ: <strong>{totalAmount.toLocaleString("en-BD")} টাকা</strong>
+                        Send Money Amount: <strong>{totalAmount.toLocaleString("en-BD")} TK</strong>
                       </span>
                     </div>
 
@@ -550,12 +547,12 @@ export default function BookingForm() {
                       className="px-3 py-1.5 rounded-lg bg-[#E2136E] hover:bg-[#c4165e] text-white text-xs font-semibold flex items-center gap-1 transition-all active:scale-95 shrink-0 shadow-sm"
                     >
                       {copiedBkash ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{copiedBkash ? "কপি হয়েছে" : "নম্বর কপি"}</span>
+                      <span>{copiedBkash ? "Copied!" : "Copy Number"}</span>
                     </button>
                   </div>
 
                   <p className="text-[11px] text-gray-300 leading-relaxed">
-                    💡 বিকাশ অ্যাপ অথবা <strong>*247#</strong> ডায়াল করে <strong>Send Money</strong> সম্পন্ন করার পর নিচে প্রাপ্ত TrxID দিন।
+                    💡 Complete <strong>Send Money</strong> using the bKash App or dialing <strong>*247#</strong>, then enter the TrxID below.
                   </p>
                 </div>
               ) : (
@@ -563,7 +560,7 @@ export default function BookingForm() {
                 <div className="space-y-2.5 pt-1">
                   <div className="bg-night-900/90 border border-moon-gold/30 rounded-xl p-3 sm:p-4 text-xs font-mono space-y-2">
                     <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
-                      <span className="text-gray-400 font-sans">ব্যাংকের নাম:</span>
+                      <span className="text-gray-400 font-sans">Bank Name:</span>
                       <strong className="text-white font-bold font-sans text-xs sm:text-sm flex items-center gap-1">
                         <Landmark className="w-3.5 h-3.5 text-moon-gold" />
                         {event.bankDetails.bankName}
@@ -571,14 +568,14 @@ export default function BookingForm() {
                     </div>
 
                     <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
-                      <span className="text-gray-400 font-sans">অ্যাকাউন্টের নাম:</span>
+                      <span className="text-gray-400 font-sans">Account Name:</span>
                       <span className="text-white font-bold font-sans text-xs sm:text-sm">
                         {event.bankDetails.accountName}
                       </span>
                     </div>
 
                     <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
-                      <span className="text-gray-400 font-sans">অ্যাকাউন্ট নম্বর:</span>
+                      <span className="text-gray-400 font-sans">Account Number:</span>
                       <div className="flex items-center gap-1.5">
                         <span className="text-moon-gold font-extrabold text-sm sm:text-base tracking-wider">
                           {event.bankDetails.accountNumber}
@@ -589,18 +586,18 @@ export default function BookingForm() {
                           className="px-2 py-0.5 rounded bg-night-800 hover:bg-night-700 text-moon-gold border border-moon-gold/30 text-[10px] font-sans flex items-center gap-1 transition-all active:scale-95"
                         >
                           {copiedAccNum ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                          <span>{copiedAccNum ? "কপি হয়েছে" : "কপি"}</span>
+                          <span>{copiedAccNum ? "Copied!" : "Copy"}</span>
                         </button>
                       </div>
                     </div>
 
                     <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
-                      <span className="text-gray-400 font-sans">শাখা (Branch):</span>
+                      <span className="text-gray-400 font-sans">Branch:</span>
                       <span className="text-gray-200 font-sans">{event.bankDetails.branch}</span>
                     </div>
 
                     <div className="flex justify-between items-center pb-1.5 border-b border-night-800">
-                      <span className="text-gray-400 font-sans">রাউটিং নম্বর:</span>
+                      <span className="text-gray-400 font-sans">Routing Number:</span>
                       <div className="flex items-center gap-1.5">
                         <span className="text-gray-200">{event.bankDetails.routingNumber}</span>
                         <button
@@ -609,19 +606,19 @@ export default function BookingForm() {
                           className="px-2 py-0.5 rounded bg-night-800 hover:bg-night-700 text-gray-300 border border-night-600 text-[10px] font-sans flex items-center gap-1 transition-all active:scale-95"
                         >
                           {copiedRouting ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                          <span>{copiedRouting ? "কপি" : "কপি"}</span>
+                          <span>{copiedRouting ? "Copied!" : "Copy"}</span>
                         </button>
                       </div>
                     </div>
 
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400 font-sans">সুইফট কোড:</span>
+                      <span className="text-gray-400 font-sans">SWIFT Code:</span>
                       <span className="text-gray-200">{event.bankDetails.swiftCode}</span>
                     </div>
                   </div>
 
                   <p className="text-[11px] text-gray-300 leading-relaxed">
-                    💡 Citytouch, NPSB, BEFTN অথবা যেকোনো ব্যাংক থেকে ফান্ড ট্রান্সফার করে নিচের ঘরে ট্রানজেকশন / রেফারেন্স আইডি দিন।
+                    💡 Transfer funds via Citytouch, NPSB, BEFTN, or any bank transfer, then enter the Transaction / Reference ID below.
                   </p>
                 </div>
               )}
@@ -635,13 +632,13 @@ export default function BookingForm() {
                   <span className="flex items-center gap-1">
                     <span>
                       {paymentMethod === "bkash"
-                        ? "বিকাশ ট্রানজেকশন আইডি (bKash TrxID)"
-                        : "ব্যাংক ট্রান্সফার রেফারেন্স / ট্রানজেকশন আইডি"}
+                        ? "bKash Transaction ID (TrxID)"
+                        : "Bank Transfer Reference / Transaction ID"}
                     </span>
                     <span className="text-moon-gold">*</span>
                   </span>
                   <span className="text-[10px] sm:text-[11px] font-normal text-gray-400">
-                    {paymentMethod === "bkash" ? "যেমন: 8N7A6B5C4D" : "যেমন: FT2611870023"}
+                    {paymentMethod === "bkash" ? "e.g. 8N7A6B5C4D" : "e.g. FT2611870023"}
                   </span>
                 </label>
                 <input
@@ -650,8 +647,8 @@ export default function BookingForm() {
                   required
                   placeholder={
                     paymentMethod === "bkash"
-                      ? "বিকাশ TrxID লিখুন"
-                      : "ব্যাংক ট্রান্সফার রেফারেন্স নম্বর লিখুন"
+                      ? "Enter bKash TrxID"
+                      : "Enter Bank Transfer Reference ID"
                   }
                   value={formData.transactionId}
                   onChange={(e) => {
@@ -682,11 +679,11 @@ export default function BookingForm() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                   </svg>
-                  <span>অনুরোধ পাঠানো হচ্ছে...</span>
+                  <span>Submitting request...</span>
                 </span>
               ) : (
                 <>
-                  <span>{totalAmount.toLocaleString("en-BD")} টাকা পরিশোধ ও বুকিং কনফার্ম করুন</span>
+                  <span>Pay {totalAmount.toLocaleString("en-BD")} TK &amp; Confirm Booking</span>
                   <Send className="w-4 h-4" />
                 </>
               )}
@@ -695,7 +692,7 @@ export default function BookingForm() {
             <div className="pt-1 text-center space-y-1">
               <p className="text-[11px] sm:text-xs text-gray-300 font-medium flex items-center justify-center gap-1.5">
                 <Lock className="w-3.5 h-3.5 text-moon-gold" />
-                <span>বুকিং প্রেরণের পর TrxID যাচাই করে আমাদের টিম আসন কনফার্ম করবে।</span>
+                <span>Our team will verify your TrxID / Reference and confirm your seats via WhatsApp or call.</span>
               </p>
             </div>
           </form>
