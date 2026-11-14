@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useId, FormEvent } from "react";
 import { event } from "@/content/event";
 import { normalizeBdPhone, isValidBdPhone } from "@/lib/validate";
@@ -28,19 +29,16 @@ import {
 // Official bKash Origami Logo Component
 function BkashLogo({ className = "w-5 h-5" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-label="bKash Logo"
-    >
-      <path d="M48.2 13.5L8.5 45.4L37.8 55.6L48.2 13.5Z" fill="#E2136E" />
-      <path d="M48.2 13.5L91.5 35.8L61.2 55.6L48.2 13.5Z" fill="#C4165E" />
-      <path d="M37.8 55.6L49.5 86.5L61.2 55.6H37.8Z" fill="#D81766" />
-      <path d="M8.5 45.4L28.5 75.2L37.8 55.6L8.5 45.4Z" fill="#F01876" />
-      <path d="M91.5 35.8L71.5 75.2L61.2 55.6L91.5 35.8Z" fill="#B01052" />
-    </svg>
+    <span className={`inline-flex items-center justify-center shrink-0 ${className}`}>
+      <Image
+        src="/images/bkash-logo.png"
+        alt="bKash"
+        width={32}
+        height={32}
+        className="w-full h-full object-contain"
+        unoptimized
+      />
+    </span>
   );
 }
 
@@ -504,7 +502,7 @@ export default function BookingForm() {
                         : "bg-night-900/80 border-night-700 text-gray-300 hover:border-night-600"
                     }`}
                   >
-                    <BkashLogo className="w-5 h-5 shrink-0" />
+                    <BkashLogo className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
                     <span>bKash (বিকাশ)</span>
                   </button>
 
@@ -521,7 +519,7 @@ export default function BookingForm() {
                         : "bg-night-900/80 border-night-700 text-gray-300 hover:border-night-600"
                     }`}
                   >
-                    <Landmark className="w-4 h-4 text-moon-gold shrink-0" />
+                    <Landmark className="w-4 h-4 sm:w-5 sm:h-5 text-moon-gold shrink-0" />
                     <span>ব্যাংক ট্রান্সফার</span>
                   </button>
                 </div>
@@ -533,7 +531,7 @@ export default function BookingForm() {
                   <div className="flex items-center justify-between bg-night-900/90 border border-[#E2136E]/40 rounded-xl px-3.5 py-3 text-xs shadow-sm">
                     <div className="flex flex-col">
                       <div className="flex items-center gap-2">
-                        <BkashLogo className="w-5 h-5 shrink-0" />
+                        <BkashLogo className="w-6 h-6 shrink-0" />
                         <span className="font-bold text-white text-xs sm:text-sm">
                           bKash Personal (Send Money)
                         </span>
