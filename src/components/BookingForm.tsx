@@ -224,8 +224,8 @@ export default function BookingForm() {
   };
 
   return (
-    <section id="book" className="py-8 sm:py-16 md:py-20 px-4 max-w-2xl mx-auto scroll-mt-6 relative">
-      <Reveal className="text-center mb-5 sm:mb-8">
+    <section id="book" className="pt-2 pb-6 sm:pt-4 sm:pb-10 px-4 max-w-2xl mx-auto scroll-mt-6 relative">
+      <Reveal className="text-center mb-3 sm:mb-5">
         <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-moon-gold font-bold px-3.5 py-1 rounded-full bg-moon-gold/10 border border-moon-gold/25 shadow-sm">
           <Tag className="w-3.5 h-3.5 text-moon-gold" />
           <span>RESERVATION &amp; PAYMENT</span>

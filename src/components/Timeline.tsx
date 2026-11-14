@@ -4,13 +4,13 @@ import { Clock, Utensils, Moon, Coffee, Sparkles, CheckCircle2, Waves, GlassWate
 
 export default function Timeline() {
   return (
-    <section className="py-8 sm:py-16 md:py-20 px-4 max-w-4xl mx-auto relative">
-      <Reveal className="text-center mb-6 sm:mb-12">
+    <section className="pt-2 pb-6 sm:pt-4 sm:pb-10 px-4 max-w-4xl mx-auto relative">
+      <Reveal className="text-center mb-4 sm:mb-6">
         <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-moon-gold font-bold px-4 py-1.5 rounded-full bg-moon-gold/10 border border-moon-gold/25 shadow-sm">
           <Clock className="w-3.5 h-3.5 text-moon-gold" />
           <span>EVENT SCHEDULE (11 PM TO 5 AM)</span>
         </span>
-        <p className="text-xs sm:text-base text-gray-300 mt-2 sm:mt-3 max-w-lg mx-auto">
+        <p className="text-xs sm:text-base text-gray-300 mt-1.5 sm:mt-2 max-w-lg mx-auto">
           {event.date} • {event.venue}
         </p>
       </Reveal>

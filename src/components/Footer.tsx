@@ -8,7 +8,7 @@ export default function Footer() {
   const currentYear = 2026;
 
   return (
-    <footer className="mt-8 sm:mt-16 border-t border-night-800/80 bg-gradient-to-b from-night-950 via-[#070e24] to-night-950 py-8 sm:py-14 px-4 text-center relative">
+    <footer className="mt-4 sm:mt-8 border-t border-night-800/80 bg-gradient-to-b from-night-950 via-[#070e24] to-night-950 py-6 sm:py-10 px-4 text-center relative">
       <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-moon-gold/40 to-transparent" />
 
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-5">

@@ -4,7 +4,7 @@ import { Calendar, MapPin, Tag } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[560px] sm:min-h-[640px] flex items-center justify-center overflow-hidden px-4 pt-10 pb-12 sm:pt-16 sm:pb-20">
+    <section className="relative overflow-hidden px-4 pt-8 pb-4 sm:pt-12 sm:pb-6">
       {/* Background Full Moon Night & Moonlit Sea Visual (Pure Beach & Moon SVG - No Persons) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <Image
@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,200,76,0.15)_0%,transparent_65%)]" />
 
         {/* Soft Tide Mist Gradient at Bottom for Seamless Transition */}
-        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#030611] to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#030611] to-transparent" />
       </div>
 
       <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center w-full px-2">
